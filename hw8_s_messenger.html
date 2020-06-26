@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innerHTML function test</title>
+</head>
+<style>
+    body {
+        box-sizing: border-box;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+    #generator {
+        margin: auto;
+        width: 50%;
+    }
+    .outerDiv {
+        background-color: rgb(26, 26, 26);
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .innerDiv {
+        background-color: rgb(245, 245, 245);
+        width: 100%;
+        padding: 10px 0;
+    }
+    .mess {
+        box-shadow: 4px 4px 12px 0px rgba(0,0,0,0.44);
+        padding: 0 0 0 5px;
+        margin-left: 10px;
+        border-radius: 20px 20px 20px 0px;
+        background: linear-gradient(199deg, rgba(235,235,235,1) 0%, rgba(159,159,159,1) 100%);
+        width: 40%;
+        text-align: left;
+        font-size: 25px;
+    }
+    .mess strong {
+        color: red;
+    }
+    .myMessage {
+        background: linear-gradient(-156deg, rgba(168,191,233,1) 0%, rgba(61,113,205,1) 100%);
+        padding: 0 5px 0 0;
+        border-radius: 20px 20px 0px 20px;
+        position: relative;
+        right: 0;
+        text-align: right;
+        margin-left: auto;
+        margin-right: 5px;
+        }
+    .myMessage strong {
+        color: blue;
+    }
+</style>
+<body>
+    <div class="outerDiv">
+        <div id="generator">
+            <div class="innerDiv">
+                <div class="mess"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let arr1 = [
+          {user: 'Alice', message: 'Чего не спишь?', isMyMessage: false},
+          {user: 'Bob', message: 'В интернете сижу', isMyMessage: true},
+          {user: 'Alice', message: 'Круто, а я в гостях!', isMyMessage: false},
+          {user: 'Bob', message: 'Так поздно, у кого?', isMyMessage: true},
+          {user: 'Alice', message: 'У тебя!!!', isMyMessage: false},
+          {user: 'Bob', message: 'Вот блин! Забыл :(', isMyMessage: true},
+        ]
+        const renderResList = function (arr1) {
+            let generatorHTML = '';
+            arr1.forEach(item => {
+                generatorHTML += `
+                    <div class="innerDiv">
+                        <div class="mess ${item.isMyMessage ? "myMessage": ""}"><strong>${item.user}</strong><br><i>${item.message}</i></div>
+                    </div>
+                `;
+            });
+            generator.innerHTML = generatorHTML;
+        };
+        renderResList(arr1);
+    </script>
+</body>
+</html>

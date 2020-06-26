@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innerHTML function test</title>
+</head>
+<style>
+    body {
+        box-sizing: border-box;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+    #generator {
+        margin: auto;
+        width: 50%;
+    }
+    .outerDiv {
+        background-color: rgb(26, 26, 26);
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .innerDiv {
+        display: inline-flex;
+        background-color: rgb(45, 45, 45);
+        width: 100%;
+        align-items: center;
+        padding: 10px 0;
+    }
+    .operation {
+        margin-left: 10px;
+        border: 8px inset #1C6EA4;
+        border-radius: 40px 40px 40px 0px;
+        background-color: rgb(180, 180, 180);
+        width: 60%;
+        text-align: center;
+        font-size: 30px;
+    }
+    .result {
+        margin-left: auto;
+        margin-right: 10px;
+        border: 8px inset #571ca4;
+        border-radius: 40px 40px 0px 40px;
+        background-color: rgb(180, 180, 180);
+        width: 30%;
+        text-align: center;
+        font-size: 30px;
+    }
+</style>
+<body>
+    <div class="outerDiv">
+        <div id="generator">
+            <div class="innerDiv">
+                <div class="operation">1+2</div>
+                <div class="result">3</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let arr1 = [
+          {operation: '1+2', result: '3'},
+          {operation: '2+2', result: '4'},
+          {operation: '5+5', result: '10'},
+          {operation: '10-4', result: '6'},
+          {operation: '50-20', result: '30'},
+          {operation: '10*2', result: '20'},
+          {operation: '11*5', result: '55'},
+          {operation: '100/2', result: '50'},
+          {operation: '15/3', result: '5'},
+          {operation: '(1+2)*20', result: '60'},
+        ]
+        const renderResList = function (arr1) {
+            let generatorHTML = '';
+            arr1.forEach(item => {
+                generatorHTML += `
+                    <div class="innerDiv">
+                        <div class="operation">${item.operation}</div>
+                        <div class="result">${item.result}</div>
+                    </div>
+                `;
+            });
+            generator.innerHTML = generatorHTML;            
+        };
+        renderResList(arr1);
+    </script>
+</body>
+</html>
